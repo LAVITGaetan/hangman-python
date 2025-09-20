@@ -6,7 +6,7 @@ import UI
 # Get random word from file
 def getRandomWord():
     try:
-        with open("words.txt", "r") as file:
+        with open("data/words.txt", "r") as file:
             random_word = random.choice([line.strip() for line in file]).upper()
             return random_word
     except FileNotFoundError as e:
@@ -37,15 +37,15 @@ def checkInput(letter, random_word, attempts, dashed_word, penalties):
 
 # Write best score
 def writeBestScore(attempts):
-    with open("best_scores.txt", "a+") as scoreFile:
+    with open("data/best_scores.txt", "a+") as scoreFile:
         currentDate = datetime.datetime.now()
         formatedScore = f"{attempts} {currentDate}\n"
         scoreFile.write(formatedScore)
         
 def getBestScore():
     try:
-        with open("best_scores.txt", "r") as scoreFile:
-            file_size = os.stat("best_scores.txt").st_size
+        with open("data/best_scores.txt", "r") as scoreFile:
+            file_size = os.stat("data/best_scores.txt").st_size
             if file_size == 0:
                 return 0
             else:
