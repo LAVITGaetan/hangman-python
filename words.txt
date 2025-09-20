@@ -1,3 +1,11 @@
+sun
+sky
+fog
+sea
+ash
+ice
+fire
+dust
 apple
 cloud
 river
@@ -8,3 +16,13 @@ night
 light
 music
 stone
+horizon
+silence
+crystal
+lantern
+melody
+twilight
+waterfall
+illusion
+sunlight
+eternity
