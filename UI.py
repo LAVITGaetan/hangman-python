@@ -15,12 +15,21 @@ dark = (16,5,24)
 white = (255,255,255)
 green = (58,120,97)
 
-def drawUI(dashed_word, best_score):
-    UIletterContainer = pygame.Rect(0, 610, 1200, 400)
+def drawWord(dashed_word):
+    WordSurface = pygame.Surface((330,75))
+    WordSurface.fill(dark)
+    UIword = medium_font.render(dashed_word, True, white,dark)
+    UIword_width = UIword.get_rect().width
+    UIword_height = UIword.get_rect().height
+    WordSurface = pygame.Surface((UIword_width + 50,UIword_height + 50))
+    WordSurface.fill(dark)
+    WordSurface.blit(UIword,(20,20))
+    screen.blit(WordSurface, (450,300))
+    
+def drawScore(best_score):
     UIattemptText = default_font.render(f"Attempts : 0", True, white)
     UIpenaltiesText = default_font.render(f"Penalties : 0", True, white)
     UIscoreText = default_font.render(f"Best : {best_score}", True, white)
-    UIword = medium_font.render(dashed_word, True, white,dark)
     ScoreSurface = pygame.Surface((1200,75))
     ScoreSurface.fill(green)
     ScoreBorder = pygame.Surface((1200,10))
@@ -30,9 +39,11 @@ def drawUI(dashed_word, best_score):
     screen.blit(UIattemptText,(50,25))
     screen.blit(UIpenaltiesText,(500,25))
     screen.blit(UIscoreText,(950,25))
-    WordSurface = pygame.Surface((300,100))
-    WordSurface.fill(dark)
-    screen.blit(UIword,(500,300))
+
+def drawUI(dashed_word, best_score):
+    drawScore(best_score)
+    drawWord(dashed_word)
+    UIletterContainer = pygame.Rect(0, 610, 1200, 400)
     pygame.draw.rect(screen, green, UIletterContainer)
     
 def drawAlphabet():

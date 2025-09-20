@@ -20,17 +20,16 @@ def createPairsWord(random_word):
         pairString += '_ '
     return pairString
 
-def checkInput( letter, random_word, attempts, dashed_word, penalties):
+def checkInput(letter, random_word, attempts, dashed_word, penalties):
     UIattemptText = UI.default_font.render(f"Attempts : {attempts}", True, UI.white,(58,120,97))
     UI.screen.blit(UIattemptText,(50,25))
     if letter in random_word:
             for i in range(len(random_word)):
-                if(letter == random_word[i]):
+                if letter == random_word[i]:
                     dashed_word = dashed_word.split(' ')
                     dashed_word[i] = letter
                     dashed_word = ' '.join(dashed_word)
-                    UIword = UI.medium_font.render(f"{dashed_word}", True, UI.white,(16,5,24))
-                    UI.screen.blit(UIword,(500,300))
+                    UI.drawWord(dashed_word)
     else :
         UIpenaltiesText = UI.default_font.render(f"Penalties : {penalties + 1}", True, UI.white,(58,120,97))
         UI.screen.blit(UIpenaltiesText,(500,25))
