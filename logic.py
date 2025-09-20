@@ -61,32 +61,6 @@ def getBestScore():
     except FileNotFoundError as e:
         print(e)
         return 0
-
-# Check Best Score
-def checkBestScore(attempts):
-    best_score = 0
-    try:
-        with open("best_scores.txt", "r") as scoreFile:
-            file_size = os.stat("best_scores.txt").st_size
-            if file_size == 0:
-                writeBestScore(attempts)
-                return attempts
-            else:
-                currentBest = None
-                for line in scoreFile:
-                    if currentBest == None:
-                        currentBest = line.split(' ')
-                    elif int(currentBest[0]) > int(line.split(' ')[0]):
-                        currentBest = line.split(' ')
-                if attempts < int(currentBest[0]):  
-                    print(str(attempts) + '222')
-                    writeBestScore(attempts)
-                    return attempts  
-                else:
-                    return currentBest[0]
-    except FileNotFoundError as e:
-        print(e)
-        return best_score
         
 # Win & Lose logic
 def playerWon(random_word, attempts):
