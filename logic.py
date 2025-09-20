@@ -32,7 +32,7 @@ def checkInput( letter, random_word, attempts, dashed_word, penalties):
                     UIword = UI.medium_font.render(f"{dashed_word}", True, (255, 255,255),(16,5,24))
                     UI.screen.blit(UIword,(500,300))
     else :
-        UIpenaltiesText = UI.default_font.render(f"Penalties : {penalties}", True, (255, 255,255),(58,120,97))
+        UIpenaltiesText = UI.default_font.render(f"Penalties : {penalties + 1}", True, (255, 255,255),(58,120,97))
         UI.screen.blit(UIpenaltiesText,(500,25))
     return dashed_word
 
@@ -69,3 +69,14 @@ def playerWon(random_word, attempts):
 
 def playerLost(random_word, attempts):
     UI.displayMessage("lose", random_word, attempts)
+    
+def checkGameStatus(penalties, random_word, attempts, dashed_word):
+        if dashed_word.count('_') == 0:
+            playerWon(random_word, attempts)
+            return True
+            
+        if penalties > 11:
+            playerLost(random_word, attempts)
+            return True
+            
+        return False
