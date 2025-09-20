@@ -9,10 +9,11 @@ random_word = logic.getRandomWord()
 dashed_word = logic.createPairsWord(random_word)
 isRunning = True
 finished = False
+best_score = logic.getBestScore()
 # TEST
-# print(random_word)
+print(random_word)
 
-UI.drawUI( dashed_word)
+UI.drawUI(dashed_word, best_score)
 
 letters = UI.drawAlphabet()
 

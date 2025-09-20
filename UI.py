@@ -11,11 +11,11 @@ default_font = pygame.font.Font(None, 35)
 medium_font = pygame.font.Font(None, 70)
 keyboard_font = pygame.font.Font(None, 50)
 
-def drawUI(dashed_word):
+def drawUI(dashed_word, best_score):
     UIletterContainer = pygame.Rect(0, 550, 1200, 400)
     UIattemptText = default_font.render(f"Attempts : 0", True, (255, 255,255))
     UIpenaltiesText = default_font.render(f"Penalties : 0", True, (255, 255,255))
-    UIscoreText = default_font.render(f"Best : 0", True, (255, 255,255))
+    UIscoreText = default_font.render(f"Best : {best_score}", True, (255, 255,255))
     UIword = medium_font.render(dashed_word, True, (255, 255,255),(16,5,24))
     ScoreSurface = pygame.Surface((1200,75))
     ScoreSurface.fill((58,120,97))
