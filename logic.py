@@ -21,7 +21,7 @@ def createPairsWord(random_word):
     return pairString
 
 def checkInput( letter, random_word, attempts, dashed_word, penalties):
-    UIattemptText = UI.default_font.render(f"Attempts : {attempts}", True, (255, 255,255),(58,120,97))
+    UIattemptText = UI.default_font.render(f"Attempts : {attempts}", True, UI.white,(58,120,97))
     UI.screen.blit(UIattemptText,(50,25))
     if letter in random_word:
             for i in range(len(random_word)):
@@ -29,10 +29,10 @@ def checkInput( letter, random_word, attempts, dashed_word, penalties):
                     dashed_word = dashed_word.split(' ')
                     dashed_word[i] = letter
                     dashed_word = ' '.join(dashed_word)
-                    UIword = UI.medium_font.render(f"{dashed_word}", True, (255, 255,255),(16,5,24))
+                    UIword = UI.medium_font.render(f"{dashed_word}", True, UI.white,(16,5,24))
                     UI.screen.blit(UIword,(500,300))
     else :
-        UIpenaltiesText = UI.default_font.render(f"Penalties : {penalties + 1}", True, (255, 255,255),(58,120,97))
+        UIpenaltiesText = UI.default_font.render(f"Penalties : {penalties + 1}", True, UI.white,(58,120,97))
         UI.screen.blit(UIpenaltiesText,(500,25))
     return dashed_word
 
@@ -42,7 +42,6 @@ def writeBestScore(attempts):
         currentDate = datetime.datetime.now()
         formatedScore = f"{attempts} {currentDate}\n"
         scoreFile.write(formatedScore)
-        
         
 def getBestScore():
     try:
@@ -74,10 +73,8 @@ def playerLost(random_word, attempts):
 def checkGameStatus(penalties, random_word, attempts, dashed_word):
         if dashed_word.count('_') == 0:
             playerWon(random_word, attempts)
-            return True
-            
+            return True   
         if penalties > 11:
             playerLost(random_word, attempts)
-            return True
-            
+            return True    
         return False

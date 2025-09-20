@@ -7,7 +7,7 @@ penalties = 0
 bestscore = 0
 random_word = logic.getRandomWord()
 dashed_word = logic.createPairsWord(random_word)
-isRunning = True
+game_running = True
 finished = False
 best_score = logic.getBestScore()
 # TEST
@@ -17,7 +17,7 @@ UI.drawUI(dashed_word, best_score)
 
 letters = UI.drawAlphabet()
 
-while isRunning :
+while game_running :
     finished = logic.checkGameStatus(penalties, random_word, attempts, dashed_word)
     old_dashed_word = dashed_word
     for event in UI.pygame.event.get():
@@ -32,7 +32,7 @@ while isRunning :
                         penalties += 1
         UI.pygame.display.update()
         if event.type == QUIT:
-            isRunning = False
+            game_running = False
     UI.pygame.display.flip()
 
 UI.pygame.quit()
